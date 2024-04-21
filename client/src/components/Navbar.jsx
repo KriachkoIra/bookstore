@@ -11,7 +11,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-cyan" to="/books">
+            <Link className="nav-link text-cyan" to="/shop">
               Shop
             </Link>
           </li>

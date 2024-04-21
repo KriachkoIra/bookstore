@@ -1,11 +1,27 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit() {}
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    axios.defaults.withCredentials = true;
+
+    axios
+      .post("http://localhost:3001/auth/login", { email, password })
+      .then((res) => {
+        console.log(res);
+        if (res.data.login && res.data.role === "admin") {
+          navigate("/books");
+        }
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div className="mt-5">
@@ -14,21 +30,21 @@ export default function LoginPage() {
         <input
           type="email"
           placeholder="your@email.com"
-          class="form-control"
+          className="form-control"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="password"
-          class="form-control"
+          className="form-control"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          class="btn btn-primary bg-cyan border-cyan mb-3"
+          className="btn btn-primary bg-cyan border-cyan mb-3"
           type="submit"
-          onClick={handleSubmit}
+          onClick={(e) => handleSubmit(e)}
         >
           Login
         </button>

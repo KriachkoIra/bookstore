@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ShopPage from "./pages/ShopPage";
 import BooksPage from "./pages/BooksPage";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/shop" element={<ShopPage />} />
         <Route path="/books" element={<BooksPage />} />
       </Routes>
     </BrowserRouter>
