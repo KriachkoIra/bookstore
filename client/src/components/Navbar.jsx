@@ -6,19 +6,19 @@ export default function Navbar() {
       <div className="container-fluid d-flex justify-content-around">
         <ul className="nav fs-5">
           <li className="nav-item">
-            <Link className="nav-link text-indigo" to="/">
+            <Link className="nav-link text-cyan" to="/">
               Home
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-indigo" to="/books">
+            <Link className="nav-link text-cyan" to="/books">
               Shop
             </Link>
           </li>
         </ul>
         <div className="navbar-brand">
           <img
-            src="logo.png"
+            src="logo1.png"
             alt="Logo"
             height="30"
             className="d-inline-block align-text-top"
@@ -26,10 +26,10 @@ export default function Navbar() {
         </div>
         <ul className="nav fs-5">
           <li className="nav-item">
-            <Link className="nav-link text-indigo">Cart</Link>
+            <Link className="nav-link text-cyan">Cart</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-indigo" to="/login">
+            <Link className="nav-link text-cyan" to="/login">
               Login
             </Link>
           </li>

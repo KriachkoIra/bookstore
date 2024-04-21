@@ -10,10 +10,14 @@ body {
   color: rgba(0, 0, 0, 0.7);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(165, 180, 252);
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     rgba(165, 180, 252, 0.5) 0%,
+    rgba(255, 255, 255, 1) 50%
+  ); */
+  background: linear-gradient(
+    180deg,
+    rgba(184, 229, 238, 0.6) 0%,
     rgba(255, 255, 255, 1) 50%
   );
   background-repeat: no-repeat;
@@ -22,29 +26,36 @@ body {
   overflow-x: hidden;
 }
 
-.bg-indigo-light {
-  background-color: #a5b4fc;
+.bg-cyan-light {
+  /* background-color: #a5b4fc; */
+  background-color: #b8e5ee;
 }
 
-.bg-indigo {
-  background-color: #818cf8;
+.bg-cyan {
+  /* background-color: #818cf8; */
+  background-color: #79c7d8;
 }
 
-.border-indigo {
-  border: 1px solid #818cf8;
+.border-cyan {
+  /* border: 1px solid #818cf8; */
+  border: 1px solid #79c7d8;
 }
 
-.bg-indigo:hover {
-  background-color: #4f46e5;
+.bg-cyan:hover {
+  /* background-color: #4f46e5; */
+  background-color: #0891b2;
+  border: 1px solid #0891b2;
 }
 
-.bg-indigo-dark {
-  background-color: #4f46e5;
+.bg-cyan-dark {
+  /* background-color: #4f46e5; */
+  background-color: #0891b2;
   color: white;
 }
 
-.text-indigo {
-  color: #4f46e5;
+.text-cyan {
+  /* color: #4f46e5; */
+  color: #0891b2;
 }
 
 .big-text {
