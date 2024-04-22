@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function LoginPage() {
+export default function LoginPage({ setRole }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,8 +17,10 @@ export default function LoginPage() {
       .then((res) => {
         console.log(res);
         if (res.data.login && res.data.role === "admin") {
+          setRole("admin");
           navigate("/books");
         } else if (res.data.login) {
+          setRole("user");
           navigate("/shop");
         }
       })

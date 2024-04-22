@@ -14,6 +14,11 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  return res.status(200).json({ logout: true });
+});
+
 router.post("/register", register);
 
 export default router;
