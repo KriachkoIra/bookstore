@@ -3,7 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import createAdmin from "./controllers/admin.controller.js";
+import { createAdmin } from "./controllers/admin.controller.js";
 import AuthRouter from "./routes/auth.js";
 
 const app = express();

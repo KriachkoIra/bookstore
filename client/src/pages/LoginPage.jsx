@@ -18,6 +18,8 @@ export default function LoginPage() {
         console.log(res);
         if (res.data.login && res.data.role === "admin") {
           navigate("/books");
+        } else if (res.data.login) {
+          navigate("/shop");
         }
       })
       .catch((err) => console.log(err));
@@ -33,6 +35,7 @@ export default function LoginPage() {
           className="form-control"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           type="password"
@@ -40,6 +43,7 @@ export default function LoginPage() {
           className="form-control"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button
           className="btn btn-primary bg-cyan border-cyan mb-3"
