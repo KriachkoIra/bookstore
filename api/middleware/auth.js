@@ -8,7 +8,7 @@ const verify = (req, res, next) => {
   if (!token) {
     return res.status(400).json({ message: "No token." });
   } else {
-    jwt.verify(token, process.env.ADMIN_KEY, (err, decoded) => {
+    jwt.verify(token, process.env.AUTH_KEY, (err, decoded) => {
       if (err) {
         return res.status(400).json({ message: "Invalid token." });
       } else {

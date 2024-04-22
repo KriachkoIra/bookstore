@@ -41,7 +41,7 @@ const login = async (req, res) => {
 
     const token = jwt.sign(
       { role: "admin", username: "admin" },
-      process.env.ADMIN_KEY
+      process.env.AUTH_KEY
     );
     res.cookie("token", token, { httpOnly: true, secure: true });
     return res.status(200).json({ login: true, role: "admin" });

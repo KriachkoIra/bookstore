@@ -43,7 +43,7 @@ const login = async (req, res) => {
 
     const token = jwt.sign(
       { role: "user", username: user.name },
-      process.env.USER_KEY
+      process.env.AUTH_KEY
     );
 
     res.cookie("token", token, { httpOnly: true, secure: true });
