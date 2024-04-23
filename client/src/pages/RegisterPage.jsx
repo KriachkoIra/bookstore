@@ -6,6 +6,7 @@ export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState(null);
 
   const navigate = useNavigate();
 
@@ -21,7 +22,10 @@ export default function RegisterPage() {
           navigate("/login");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setAlert(err.response.data.message);
+        console.log(err);
+      });
   }
 
   return (
@@ -52,6 +56,11 @@ export default function RegisterPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {alert && (
+          <div class="alert alert-danger" role="alert">
+            {alert}
+          </div>
+        )}
         <button
           class="btn btn-primary bg-cyan border-cyan mb-3"
           type="submit"

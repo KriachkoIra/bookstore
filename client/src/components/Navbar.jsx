@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Navbar({ role }) {
+export default function Navbar({ role, cart }) {
   return (
     <nav className="navbar bg-light sticky-top py-2">
       <div className="container-fluid d-flex justify-content-around">
@@ -10,11 +10,19 @@ export default function Navbar({ role }) {
               Home
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link text-cyan" to="/shop">
-              Shop
-            </Link>
-          </li>
+          {role === "admin" ? (
+            <li className="nav-item">
+              <Link className="nav-link text-cyan" to="/books">
+                Books
+              </Link>
+            </li>
+          ) : (
+            <li className="nav-item">
+              <Link className="nav-link text-cyan" to="/shop">
+                Shop
+              </Link>
+            </li>
+          )}
         </ul>
         <div className="navbar-brand text-center">
           <img
@@ -25,23 +33,27 @@ export default function Navbar({ role }) {
           />
         </div>
         <ul className="nav fs-5 text-right">
-          {role === "admin" && (
-            <>
-              <li className="nav-item">
-                <Link className="nav-link text-cyan" to="/books">
-                  Books
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-cyan" to="/addBook">
-                  Add book
-                </Link>
-              </li>
-            </>
+          {role === "admin" ? (
+            <li className="nav-item">
+              <Link className="nav-link text-cyan" to="/addBook">
+                Add book
+              </Link>
+            </li>
+          ) : (
+            <li className="nav-item">
+              <Link
+                className="nav-link text-cyan"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
+                Cart
+                {cart.length > 0 && (
+                  <span className="text-cyan">: {cart.length}</span>
+                )}
+              </Link>
+            </li>
           )}
-          <li className="nav-item">
-            <Link className="nav-link text-cyan">Cart</Link>
-          </li>
           <li className="nav-item">
             {role ? (
               <Link className="nav-link text-cyan" to="/logout">

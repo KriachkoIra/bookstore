@@ -5,6 +5,7 @@ import axios from "axios";
 export default function LoginPage({ setRole }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState(null);
 
   const navigate = useNavigate();
 
@@ -24,7 +25,10 @@ export default function LoginPage({ setRole }) {
           navigate("/shop");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setAlert(err.response.data.message);
+        console.log(err);
+      });
   }
 
   return (
@@ -47,6 +51,11 @@ export default function LoginPage({ setRole }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {alert && (
+          <div class="alert alert-danger" role="alert">
+            {alert}
+          </div>
+        )}
         <button
           className="btn btn-primary bg-cyan border-cyan mb-3"
           type="submit"

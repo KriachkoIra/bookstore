@@ -5,6 +5,9 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { createAdmin } from "./controllers/admin.controller.js";
 import AuthRouter from "./routes/auth.js";
+import booksRouter from "./routes/books.js";
+import authorsRouter from "./routes/authors.js";
+import testRouter from "./routes/test.js";
 
 const app = express();
 app.use(express.json());
@@ -22,10 +25,9 @@ mongoose
   .catch((err) => console.error("error connecting to database:", err));
 
 app.use("/auth", AuthRouter);
-
-app.get("/", (req, res) => {
-  res.json("test ok.");
-});
+app.use("/books", booksRouter);
+app.use("/authors", authorsRouter);
+app.use("/test", testRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}.`);

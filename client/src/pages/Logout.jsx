@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function Logout({ setRole }) {
   const navigate = useNavigate();
+  localStorage.setItem("items", null);
 
   useEffect(() => {
     axios

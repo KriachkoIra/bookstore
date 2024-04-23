@@ -11,7 +11,7 @@ export default function HomePage() {
         Find Your Next{" "}
         <span className="text-cyan huge-text">Favorite Story</span> Here!
         <br />
-        <Link to="/books">
+        <Link to="/shop">
           <button className="btn btn-lg mt-4 btn-primary bg-cyan border-cyan">
             Shop now!
           </button>
