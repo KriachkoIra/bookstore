@@ -34,11 +34,18 @@ export default function Navbar({ role, cart }) {
         </div>
         <ul className="nav fs-5 text-right">
           {role === "admin" ? (
-            <li className="nav-item">
-              <Link className="nav-link text-cyan" to="/addBook">
-                Add book
-              </Link>
-            </li>
+            <>
+              <li className="nav-item">
+                <Link className="nav-link text-cyan" to="/addBook">
+                  Add book
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-cyan" to="/orders">
+                  Orders
+                </Link>
+              </li>
+            </>
           ) : (
             <li className="nav-item">
               <Link

@@ -1,10 +1,27 @@
-import { useState } from "react";
+import axios from "axios";
 
-export default function Cart({ cart, setCart }) {
+export default function Cart({ cart, setCart, id }) {
   const totalPrice = cart.reduce(
     (acc, cur) => acc + cur.price * cur.quantity,
     0
   );
+
+  function handleOrder() {
+    axios.defaults.withCredentials = true;
+
+    console.log(id);
+
+    axios
+      .post("http://localhost:3001/orders", {
+        books: cart,
+        user: id,
+      })
+      .then((res) => {
+        console.log(res);
+        setCart([]);
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div
@@ -45,7 +62,10 @@ export default function Cart({ cart, setCart }) {
               </tbody>
             </table>
             <p className="text-cyan">Total price: {totalPrice}$</p>
-            <button className="btn btn-primary bg-cyan border-cyan mb-3">
+            <button
+              className="btn btn-primary bg-cyan border-cyan mb-3"
+              onClick={handleOrder}
+            >
               Checkout
             </button>
           </>

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function Logout({ setRole }) {
+export default function Logout({ setRole, setId, setCart }) {
   const navigate = useNavigate();
   localStorage.setItem("items", null);
 
@@ -13,6 +13,9 @@ export default function Logout({ setRole }) {
         console.log(res);
         if (res.data.logout) {
           setRole("");
+          setId("");
+          setCart([]);
+          localStorage.removeItem("items");
           navigate("/");
         }
       })

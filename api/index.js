@@ -8,6 +8,7 @@ import AuthRouter from "./routes/auth.js";
 import booksRouter from "./routes/books.js";
 import authorsRouter from "./routes/authors.js";
 import testRouter from "./routes/test.js";
+import ordersRouter from "./routes/order.js";
 
 const app = express();
 app.use(express.json());
@@ -27,6 +28,7 @@ mongoose
 app.use("/auth", AuthRouter);
 app.use("/books", booksRouter);
 app.use("/authors", authorsRouter);
+app.use("/orders", ordersRouter);
 app.use("/test", testRouter);
 
 app.listen(process.env.PORT, () => {

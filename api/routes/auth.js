@@ -24,6 +24,7 @@ router.post("/register", register);
 
 router.get("/verify", (req, res) => {
   const token = req.cookies.token;
+  const id = req.cookies.id;
 
   if (!token) {
     return res.status(400).json({ message: "No token." });
@@ -32,7 +33,7 @@ router.get("/verify", (req, res) => {
       if (err) {
         return res.status(400).json({ message: "Invalid token." });
       } else {
-        return res.status(200).json({ verified: true, role: decoded.role });
+        return res.status(200).json({ verified: true, role: decoded.role, id });
       }
     });
   }

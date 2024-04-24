@@ -4,6 +4,8 @@ import axios from "axios";
 export default function ShopPage({ setCart }) {
   const [books, setBooks] = useState([]);
   const [sortBy, setSortBy] = useState("");
+  const [genre, setGenre] = useState("");
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     axios
@@ -25,13 +27,35 @@ export default function ShopPage({ setCart }) {
       .catch((err) => console.log(err));
   }
 
+  function handleTitle(e) {
+    setTitle(e.target.value);
+
+    axios
+      .get(`http://localhost:3001/books?title=${e.target.value}`)
+      .then((res) => {
+        setBooks(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function handleGenre(e) {
+    setGenre(e.target.value);
+
+    axios
+      .get(`http://localhost:3001/books?genre=${e.target.value}`)
+      .then((res) => {
+        setBooks(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className="container text-center mt-4">
       <div className="row mb-4 gap-1 justify-content-start">
         <div className="col-3">
           <select
             value={sortBy}
-            className="form-select form-select input-cyan"
+            className="form-select input-cyan"
             onChange={(e) => handleSort(e)}
           >
             <option value="">Sort by...</option>
@@ -48,6 +72,31 @@ export default function ShopPage({ setCart }) {
               Price from high to low
             </option>
           </select>
+        </div>
+        <div className="col-3">
+          <select
+            value={genre}
+            onChange={(e) => handleGenre(e)}
+            className="form-select input-cyan"
+          >
+            <option value="">All genres</option>
+            <option value="Classic">Classic</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Dystopian">Dystopian</option>
+            <option value="Science Fiction">Science Fiction</option>
+          </select>
+        </div>
+        <div className="col-3">
+          <input
+            value={title}
+            type="text"
+            placeholder="Title"
+            className="form-control input-cyan"
+            onChange={(e) => handleTitle(e)}
+          />
         </div>
 
         <div className="col-auto text-cyan pt-2">
